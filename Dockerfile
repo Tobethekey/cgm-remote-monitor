@@ -17,6 +17,9 @@ RUN npm ci --cache /tmp/empty-cache --omit=optional --force && \
   # mkdir /tmp/public && \
   # chown node:node /tmp/public
 
+# Patch nightscout-connect librelinkup.js during build (runs as root, no permission issues)
+RUN node scripts/patch-llu.js
+
 USER node
 EXPOSE 1337
 
